@@ -27,10 +27,17 @@
             <Setter Property="FontSize" Value="14"/>
         </Style>
         <ControlTemplate TargetType="Button" x:Key="tempBtnEnter">
-            <Border CornerRadius="30" BorderThickness="2" BorderBrush="Black" Height="40" Width="150">
+            <Border Background="White" CornerRadius="30" BorderThickness="2" BorderBrush="Black" Height="40" Width="150">
                 <ContentControl Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{TemplateBinding Content}"/>
             </Border>
         </ControlTemplate>
-        
+        <LinearGradientBrush x:Key="buttonForeground">
+            <GradientStop Color="#FFB859FA" Offset="0" />
+            <GradientStop Color="#FF0081FF" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GridBackground" StartPoint="0.5,1" EndPoint="0.5,0">
+            <GradientStop Color="#FFAFD7FF" Offset="0"/>
+            <GradientStop Color="#FFE6CFFC" Offset="1" />
+        </LinearGradientBrush>
     </Application.Resources>
 </Application>

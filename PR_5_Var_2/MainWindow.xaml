@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PR_5_Var_2"
         mc:Ignorable="d"
         Title="Перевод валюты" Height="450" MinHeight="450" Width="700" MinWidth="700">
-    <Grid>
+    <Grid Background="{StaticResource GridBackground}">
         <StackPanel>
             <StackPanel>
                 <TextBlock Text="Перевод валюты" Style="{StaticResource txtHeader}"/>
@@ -43,7 +43,7 @@
                 <TextBox Name="tbIn" Width="100"/>
             </StackPanel>
             <StackPanel Name="stButton" Visibility="Collapsed">
-                <Button Name="btnEnter" Width="200" Template="{StaticResource tempBtnEnter}" Content="Перевести" Click="btnEnter_Click"/>
+                <Button Name="btnEnter" Foreground="{StaticResource buttonForeground}" Width="200" Template="{StaticResource tempBtnEnter}" Content="Перевести" Click="btnEnter_Click"/>
             </StackPanel>
             <StackPanel Name="stOtv" Visibility="Collapsed">
                 <TextBlock Name="txtOtv"/>
