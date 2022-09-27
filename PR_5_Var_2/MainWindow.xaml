@@ -11,6 +11,7 @@
             <StackPanel>
                 <TextBlock Text="Перевод валюты" Style="{StaticResource txtHeader}"/>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Выбор валюты:"/>
                 <RadioButton Name="rbIn" Checked="rbIn_Checked">Иностранная</RadioButton>
