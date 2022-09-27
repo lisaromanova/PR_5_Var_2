@@ -1,0 +1,43 @@
+﻿<Window x:Class="PR_5_Var_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR_5_Var_2"
+        mc:Ignorable="d"
+        Title="Перевод валюты" Height="450" MinHeight="450" Width="800" MinWidth="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel>
+                <TextBlock Text="Перевод валюты" Style="{StaticResource txtHeader}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Выбор валюты:"/>
+                <RadioButton Name="rbIn" Checked="rbIn_Checked">Иностранная</RadioButton>
+                <RadioButton Name="rbRus" Checked="rbRus_Checked">Российская</RadioButton>
+            </StackPanel>
+            <StackPanel Name="stRus" Visibility="Collapsed">
+                <TextBlock Text="Введите рубли и копейки в соответствующие поля:"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Рубли"/>
+                    <TextBox Name="txtRub" Width="100"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Копейки"/>
+                    <TextBox Name="txtKop" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="stIn" Visibility="Collapsed">
+                <TextBlock Name="tbIn"/>
+                <TextBox Name="txtIn" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="stInGet" Visibility="Collapsed">
+                <TextBlock Text="Выбор иностранной валюты:"/>
+                <ComboBox Name="cbIn" Width="150" IsEditable="True" IsReadOnly="true"/>
+            </StackPanel>
+            <StackPanel Name="stButton" Visibility="Collapsed">
+                <Button Name="btnEnter" Width="200" Template="{StaticResource tempBtnEnter}" Content="Перевести"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
