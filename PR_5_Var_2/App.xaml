@@ -18,7 +18,14 @@
         <Style TargetType="StackPanel">
             <Setter Property="Margin" Value="10"/>
         </Style>
-        
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
         <ControlTemplate TargetType="Button" x:Key="tempBtnEnter">
             <Border CornerRadius="30" BorderThickness="2" BorderBrush="Black" Height="40" Width="150">
                 <ContentControl Margin="5" VerticalAlignment="Center" HorizontalAlignment="Center" Content="{TemplateBinding Content}"/>

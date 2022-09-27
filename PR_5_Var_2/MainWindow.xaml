@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_5_Var_2"
         mc:Ignorable="d"
-        Title="Перевод валюты" Height="450" MinHeight="450" Width="800" MinWidth="800">
+        Title="Перевод валюты" Height="450" MinHeight="450" Width="700" MinWidth="700">
     <Grid>
         <StackPanel>
             <StackPanel>
@@ -16,27 +16,36 @@
                 <RadioButton Name="rbIn" Checked="rbIn_Checked">Иностранная</RadioButton>
                 <RadioButton Name="rbRus" Checked="rbRus_Checked">Российская</RadioButton>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Name="stInGet" Visibility="Collapsed">
+                <TextBlock Text="Выбор иностранной валюты:"/>
+                <ComboBox Name="cbIn" Width="150" IsEditable="True" IsReadOnly="true" SelectionChanged="cbIn_SelectionChanged">
+                    <ComboBoxItem Content="Доллары"/>
+                    <ComboBoxItem Content="Евро"/>
+                    <ComboBoxItem Content="Рупи"/>
+                    <ComboBoxItem Content="Франк"/>
+                    <ComboBoxItem Content="Иен"/>
+                </ComboBox>
+            </StackPanel>
             <StackPanel Name="stRus" Visibility="Collapsed">
                 <TextBlock Text="Введите рубли и копейки в соответствующие поля:"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Рубли"/>
-                    <TextBox Name="txtRub" Width="100"/>
+                    <TextBox Name="tbRub" Width="100"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Копейки"/>
-                    <TextBox Name="txtKop" Width="100"/>
+                    <TextBox Name="tbKop" Width="100"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="stIn" Visibility="Collapsed">
-                <TextBlock Name="tbIn"/>
-                <TextBox Name="txtIn" Width="100"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Name="stInGet" Visibility="Collapsed">
-                <TextBlock Text="Выбор иностранной валюты:"/>
-                <ComboBox Name="cbIn" Width="150" IsEditable="True" IsReadOnly="true"/>
+                <TextBlock Name="txtIn"/>
+                <TextBox Name="tbIn" Width="100"/>
             </StackPanel>
             <StackPanel Name="stButton" Visibility="Collapsed">
-                <Button Name="btnEnter" Width="200" Template="{StaticResource tempBtnEnter}" Content="Перевести"/>
+                <Button Name="btnEnter" Width="200" Template="{StaticResource tempBtnEnter}" Content="Перевести" Click="btnEnter_Click"/>
+            </StackPanel>
+            <StackPanel Name="stOtv" Visibility="Collapsed">
+                <TextBlock Name="txtOtv" Text="Итог: "/>
             </StackPanel>
         </StackPanel>
     </Grid>
