@@ -44,7 +44,7 @@ namespace PR_5_Var_2
         }
         bool IsRightRus(string s)
         {
-            Regex r = new Regex("^[1-9][0-9]*$");
+            Regex r = new Regex("^[0-9]+$");
             if (r.IsMatch(s))
             {
                 return true;
@@ -65,8 +65,8 @@ namespace PR_5_Var_2
             stRus.Visibility = Visibility.Collapsed;
             stButton.Visibility = Visibility.Collapsed;
             stOtv.Visibility = Visibility.Collapsed;
+            cbIn.SelectedIndex = -1;
             stInGet.Visibility = Visibility.Visible;
-
         }
 
         private void rbRus_Checked(object sender, RoutedEventArgs e)
@@ -76,48 +76,53 @@ namespace PR_5_Var_2
             stButton.Visibility = Visibility.Collapsed;
             stOtv.Visibility = Visibility.Collapsed;
             cbIn.SelectedIndex = -1;
+            tbRub.Text = "";
+            tbKop.Text = "";
             stRus.Visibility = Visibility.Visible;
         }
 
         private void cbIn_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            switch (cbIn.SelectedIndex)
+            if(stRus.Visibility == Visibility.Collapsed)
             {
-                case 0:
-                    stIn.Visibility = Visibility.Visible;
-                    txtIn.Text = "Введите доллары: ";
-                    stButton.Visibility = Visibility.Visible;
-                    tbIn.Text = "";
-                    stOtv.Visibility = Visibility.Collapsed;
-                    break;
-                case 1:
-                    stIn.Visibility = Visibility.Visible;
-                    txtIn.Text = "Введите евро: ";
-                    stButton.Visibility = Visibility.Visible;
-                    tbIn.Text = "";
-                    stOtv.Visibility = Visibility.Collapsed;
-                    break;
-                case 2:
-                    stIn.Visibility = Visibility.Visible;
-                    txtIn.Text = "Введите рупи: ";
-                    stButton.Visibility = Visibility.Visible;
-                    tbIn.Text = "";
-                    stOtv.Visibility = Visibility.Collapsed;
-                    break;
-                case 3:
-                    stIn.Visibility = Visibility.Visible;
-                    txtIn.Text = "Введите франки: ";
-                    stButton.Visibility = Visibility.Visible;
-                    tbIn.Text = "";
-                    stOtv.Visibility = Visibility.Collapsed;
-                    break;
-                case 4:
-                    stIn.Visibility = Visibility.Visible;
-                    txtIn.Text = "Введите иены: ";
-                    stButton.Visibility = Visibility.Visible;
-                    tbIn.Text = "";
-                    stOtv.Visibility = Visibility.Collapsed;
-                    break;
+                switch (cbIn.SelectedIndex)
+                {
+                    case 0:
+                        stIn.Visibility = Visibility.Visible;
+                        txtIn.Text = "Введите доллары: ";
+                        stButton.Visibility = Visibility.Visible;
+                        tbIn.Text = "";
+                        stOtv.Visibility = Visibility.Collapsed;
+                        break;
+                    case 1:
+                        stIn.Visibility = Visibility.Visible;
+                        txtIn.Text = "Введите евро: ";
+                        stButton.Visibility = Visibility.Visible;
+                        tbIn.Text = "";
+                        stOtv.Visibility = Visibility.Collapsed;
+                        break;
+                    case 2:
+                        stIn.Visibility = Visibility.Visible;
+                        txtIn.Text = "Введите рупи: ";
+                        stButton.Visibility = Visibility.Visible;
+                        tbIn.Text = "";
+                        stOtv.Visibility = Visibility.Collapsed;
+                        break;
+                    case 3:
+                        stIn.Visibility = Visibility.Visible;
+                        txtIn.Text = "Введите франки: ";
+                        stButton.Visibility = Visibility.Visible;
+                        tbIn.Text = "";
+                        stOtv.Visibility = Visibility.Collapsed;
+                        break;
+                    case 4:
+                        stIn.Visibility = Visibility.Visible;
+                        txtIn.Text = "Введите иены: ";
+                        stButton.Visibility = Visibility.Visible;
+                        tbIn.Text = "";
+                        stOtv.Visibility = Visibility.Collapsed;
+                        break;
+                }
             }
         }
 
@@ -135,26 +140,31 @@ namespace PR_5_Var_2
                         case 0:
                             rub *= 58.08;
                             kop = Math.Round(rub * 100,0)%100;
+                            txtOtv.Text = "Итог: ";
                             txtOtv.Text += Math.Truncate(rub).ToString()+" рублей "+kop.ToString()+" копеек";
                             break;
                         case 1:
                             rub *= 56.32;
                             kop = (rub * 100) % 100;
+                            txtOtv.Text = "Итог: ";
                             txtOtv.Text += Math.Truncate(rub).ToString() + " рублей " + kop.ToString() + " копеек";
                             break;
                         case 2:
                             rub *= 0.71;
                             kop = (rub * 100) % 100;
+                            txtOtv.Text = "Итог: ";
                             txtOtv.Text += Math.Truncate(rub).ToString() + " рублей " + kop.ToString() + " копеек";
                             break;
                         case 3:
                             rub *= 59;
                             kop = (rub * 100) % 100;
+                            txtOtv.Text = "Итог: ";
                             txtOtv.Text += Math.Truncate(rub).ToString() + " рублей " + kop.ToString() + " копеек";
                             break;
                         case 4:
                             rub *= 0.4;
                             kop = (rub * 100) % 100;
+                            txtOtv.Text = "Итог: ";
                             txtOtv.Text += Math.Truncate(rub).ToString() + " рублей " + kop.ToString() + " копеек";
                             break;
                     }
@@ -164,11 +174,76 @@ namespace PR_5_Var_2
             {
                 if (IsRightRus(tbRub.Text))
                 {
-                    if (IsRightRus(tbKop.Text))
+                    if(Convert.ToInt32(tbRub.Text) > 0)
                     {
-
+                        if (IsRightRus(tbKop.Text))
+                        {
+                            if (cbIn.SelectedIndex != -1)
+                            {
+                                string str = tbRub.Text + "," + tbKop.Text;
+                                double n = Convert.ToDouble(str);
+                                stOtv.Visibility = Visibility.Visible;
+                                switch (cbIn.SelectedIndex)
+                                {
+                                    case 0:
+                                        n /= 58.08;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " долларов";
+                                        break;
+                                    case 1:
+                                        n /= 56.32;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " евро";
+                                        break;
+                                    case 2:
+                                        n /= 0.71;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " рупи";
+                                        break;
+                                    case 3:
+                                        n /= 59;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " франков";
+                                        break;
+                                    case 4:
+                                        n /= 0.4;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " иенов";
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Выберите значение из выпадающего списка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Рубли должны быть больше ноля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
+            }
+        }
+
+        private void tbRub_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if ((tbRub.Text != "") && (tbKop.Text != ""))
+            {
+                stInGet.Visibility = Visibility.Visible;
+                stButton.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                stInGet.Visibility = Visibility.Collapsed;
+                cbIn.SelectedIndex = -1;
+                stButton.Visibility = Visibility.Collapsed;
+                stOtv.Visibility = Visibility.Collapsed;
             }
         }
     }

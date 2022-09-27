@@ -16,6 +16,17 @@
                 <RadioButton Name="rbIn" Checked="rbIn_Checked">Иностранная</RadioButton>
                 <RadioButton Name="rbRus" Checked="rbRus_Checked">Российская</RadioButton>
             </StackPanel>
+            <StackPanel Name="stRus" Visibility="Collapsed">
+                <TextBlock Text="Введите рубли и копейки в соответствующие поля:"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Рубли"/>
+                    <TextBox Name="tbRub" Width="100" SelectionChanged="tbRub_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Копейки"/>
+                    <TextBox Name="tbKop" Width="100" SelectionChanged="tbRub_SelectionChanged"/>
+                </StackPanel>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" Name="stInGet" Visibility="Collapsed">
                 <TextBlock Text="Выбор иностранной валюты:"/>
                 <ComboBox Name="cbIn" Width="150" IsEditable="True" IsReadOnly="true" SelectionChanged="cbIn_SelectionChanged">
@@ -26,17 +37,6 @@
                     <ComboBoxItem Content="Иен"/>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Name="stRus" Visibility="Collapsed">
-                <TextBlock Text="Введите рубли и копейки в соответствующие поля:"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Рубли"/>
-                    <TextBox Name="tbRub" Width="100"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Копейки"/>
-                    <TextBox Name="tbKop" Width="100"/>
-                </StackPanel>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" Name="stIn" Visibility="Collapsed">
                 <TextBlock Name="txtIn"/>
                 <TextBox Name="tbIn" Width="100"/>
@@ -45,7 +45,7 @@
                 <Button Name="btnEnter" Width="200" Template="{StaticResource tempBtnEnter}" Content="Перевести" Click="btnEnter_Click"/>
             </StackPanel>
             <StackPanel Name="stOtv" Visibility="Collapsed">
-                <TextBlock Name="txtOtv" Text="Итог: "/>
+                <TextBlock Name="txtOtv"/>
             </StackPanel>
         </StackPanel>
     </Grid>
