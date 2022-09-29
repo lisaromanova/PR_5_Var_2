@@ -133,7 +133,7 @@ namespace PR_5_Var_2
                 if (IsRightIn(tbIn.Text))
                 {
                     double rub = Convert.ToDouble(tbIn.Text);
-                    double kop = 0;
+                    double kop;
                     stOtv.Visibility=Visibility.Visible;
                     switch (cbIn.SelectedIndex)
                     {
@@ -182,8 +182,17 @@ namespace PR_5_Var_2
                             {
                                 if (cbIn.SelectedIndex != -1)
                                 {
-                                    string str = tbRub.Text + "," + tbKop.Text;
-                                    double n = Convert.ToDouble(str);
+                                    double n;
+                                    if (Convert.ToInt32(tbKop.Text) == 100)
+                                    {
+                                        n = Convert.ToDouble(tbRub.Text);
+                                        n++;
+                                    }
+                                    else
+                                    {
+                                        string str = tbRub.Text + "," + tbKop.Text;
+                                        n = Convert.ToDouble(str);
+                                    }
                                     stOtv.Visibility = Visibility.Visible;
                                     switch (cbIn.SelectedIndex)
                                     {
@@ -232,7 +241,7 @@ namespace PR_5_Var_2
                     }
                     else
                     {
-                        MessageBox.Show("Рубли должны быть больше ноля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Рубли должны быть больше нуля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
