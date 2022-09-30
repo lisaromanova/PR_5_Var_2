@@ -86,10 +86,10 @@ namespace PR_5_Var_2
                         }
                         else
                         {
-                            rubl=m.rubl;
+                            rubl = m.rubl;
                         }
-                            if (IsRightRusFile(m.kop))
-                            {
+                        if (IsRightRusFile(m.kop))
+                        {
                             string kop;
                             if (m.kop == "")
                             {
@@ -99,20 +99,20 @@ namespace PR_5_Var_2
                             {
                                 kop = m.kop;
                             }
-                                if (IsRightKop(kop))
-                                {
-                                    string str = rubl + "," + kop;
-                                    double rus = Convert.ToDouble(str);
-                                    double dollar = rus / 58.8;
-                                    double euro = rus / 56.32;
-                                    double rupi = rus / 0.71;
-                                    double frank = rus / 59;
-                                    double ien = rus / 0.4;
-                                    AddItem(L1, "", "", dollar.ToString(), euro.ToString(), rupi.ToString(), frank.ToString(), ien.ToString());
-                                }
-    
-                                
+                            if (IsRightKop(kop))
+                            {
+                                string str = rubl + "," + kop;
+                                double rus = Convert.ToDouble(str);
+                                double dollar = rus / 58.8;
+                                double euro = rus / 56.32;
+                                double rupi = rus / 0.71;
+                                double frank = rus / 59;
+                                double ien = rus / 0.4;
+                                AddItem(L1, "", "", dollar.ToString(), euro.ToString(), rupi.ToString(), frank.ToString(), ien.ToString());
                             }
+
+
+                        }
                     }
                 }
                 else
