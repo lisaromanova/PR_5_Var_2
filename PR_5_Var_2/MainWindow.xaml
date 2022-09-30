@@ -5,13 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_5_Var_2"
         mc:Ignorable="d"
-        Title="Перевод валюты" Height="450" MinHeight="450" Width="700" MinWidth="700">
+        Title="Перевод валюты" Height="500" MinHeight="500" Width="700" MinWidth="700">
     <Grid Background="{StaticResource GridBackground}">
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="184*"/>
+            <RowDefinition Height="33*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
             <StackPanel>
                 <TextBlock Text="Перевод валюты" Style="{StaticResource txtHeader}"/>
             </StackPanel>
-            
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Выбор валюты:"/>
                 <RadioButton Name="rbIn" Checked="rbIn_Checked">Иностранная</RadioButton>
@@ -48,6 +51,9 @@
             <StackPanel Name="stOtv" Visibility="Collapsed">
                 <TextBlock Name="txtOtv"/>
             </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Button Name="btnFile" Foreground="{StaticResource buttonForeground}" Width="200" Template="{StaticResource tempBtnEnter}" Content="Создать файл" Click="btnFile_Click"/>
         </StackPanel>
     </Grid>
 </Window>
