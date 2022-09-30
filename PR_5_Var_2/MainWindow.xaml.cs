@@ -97,7 +97,14 @@ namespace PR_5_Var_2
                             }
                             else
                             {
-                                kop = m.kop;
+                                if (m.kop.Length == 1)
+                                {
+                                    kop = "0" + m.kop;
+                                }
+                                else
+                                {
+                                    kop = m.kop;
+                                }
                             }
                             if (IsRightKop(kop))
                             {
@@ -108,7 +115,7 @@ namespace PR_5_Var_2
                                 double rupi = rus / 0.71;
                                 double frank = rus / 59;
                                 double ien = rus / 0.4;
-                                AddItem(L1, "", "", dollar.ToString(), euro.ToString(), rupi.ToString(), frank.ToString(), ien.ToString());
+                                AddItem(L1, "", "", Math.Round(dollar,2).ToString(), Math.Round(euro,2).ToString(), Math.Round(rupi,2).ToString(), Math.Round(frank,2).ToString(), Math.Round(ien,2).ToString());
                             }
                         }
                     }
@@ -120,7 +127,7 @@ namespace PR_5_Var_2
                         if (IsRightIn(m.dollar))
                         {
                             double dollar = Convert.ToDouble(m.dollar);
-                            dollar *= 58.08;
+                            dollar *= 58.8;
                             double kop = Math.Round(dollar * 100, 0) % 100;
                             dollar = Math.Truncate(dollar);
                             AddItem(L1, dollar.ToString(), kop.ToString(), "", "", "", "", "");
@@ -377,7 +384,16 @@ namespace PR_5_Var_2
                                 }
                                 else
                                 {
-                                    string str = tbRub.Text + "," + tbKop.Text;
+                                    string str;
+                                    if (tbKop.Text.Length == 1)
+                                    {
+                                        str = tbRub.Text + ",0" + tbKop.Text;
+                                    }
+                                    else
+                                    {
+                                        str = tbRub.Text + "," + tbKop.Text;
+                                       
+                                    }
                                     n = Convert.ToDouble(str);
                                 }
                                 stOtv.Visibility = Visibility.Visible;
@@ -446,6 +462,7 @@ namespace PR_5_Var_2
             List<MoneyString> money = new List<MoneyString>();
             getData("dataMoney.csv", money);
             List<MoneyString> m1 = new List<MoneyString>();
+            AddItem(m1, "Рубли", "Копейки", "Доллары", "Евро", "Рупии", "Франки", "Иены");
             WorkWithData(money, m1);
             PrintToFile("dataMoneyNew.csv", m1);
         }

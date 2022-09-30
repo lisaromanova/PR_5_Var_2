@@ -36,9 +36,9 @@
                 <ComboBox Name="cbIn" Width="150" IsEditable="True" IsReadOnly="true" SelectionChanged="cbIn_SelectionChanged">
                     <ComboBoxItem Content="Доллары"/>
                     <ComboBoxItem Content="Евро"/>
-                    <ComboBoxItem Content="Рупи"/>
-                    <ComboBoxItem Content="Франк"/>
-                    <ComboBoxItem Content="Иен"/>
+                    <ComboBoxItem Content="Рупии"/>
+                    <ComboBoxItem Content="Франки"/>
+                    <ComboBoxItem Content="Иены"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Name="stIn" Visibility="Collapsed">
