@@ -79,13 +79,29 @@ namespace PR_5_Var_2
                 {
                     if (IsRightRusFile(m.rubl))
                     {
-                        if (IsRightRub(m.rubl))
+                        string rubl;
+                        if (m.rubl == "")
                         {
+                            rubl = "0";
+                        }
+                        else
+                        {
+                            rubl=m.rubl;
+                        }
                             if (IsRightRusFile(m.kop))
                             {
-                                if (IsRightKop(m.kop))
+                            string kop;
+                            if (m.kop == "")
+                            {
+                                kop = "0";
+                            }
+                            else
+                            {
+                                kop = m.kop;
+                            }
+                                if (IsRightKop(kop))
                                 {
-                                    string str = m.rubl + "," + m.kop;
+                                    string str = rubl + "," + kop;
                                     double rus = Convert.ToDouble(str);
                                     double dollar = rus / 58.8;
                                     double euro = rus / 56.32;
@@ -97,7 +113,6 @@ namespace PR_5_Var_2
     
                                 
                             }
-                        }
                     }
                 }
                 else
@@ -216,18 +231,6 @@ namespace PR_5_Var_2
             else
             {
                 MessageBox.Show("Введено некорректное значение!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-        }
-        bool IsRightRub(string s)
-        {
-            if (Convert.ToInt32(s) > 0)
-            {
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("Рубли должны быть больше нуля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
         }
@@ -362,8 +365,7 @@ namespace PR_5_Var_2
             {
                 if (IsRightRus(tbRub.Text))
                 {
-                    if(IsRightRub(tbRub.Text))
-                    {
+
                         if (IsRightRus(tbKop.Text))
                         {
                             if(IsRightKop(tbKop.Text))
@@ -422,7 +424,7 @@ namespace PR_5_Var_2
                                 }
                             }
                         }
-                    }
+                    
                 }
             }
         }
