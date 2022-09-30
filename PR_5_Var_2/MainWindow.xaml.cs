@@ -110,8 +110,6 @@ namespace PR_5_Var_2
                                 double ien = rus / 0.4;
                                 AddItem(L1, "", "", dollar.ToString(), euro.ToString(), rupi.ToString(), frank.ToString(), ien.ToString());
                             }
-
-
                         }
                     }
                 }
@@ -365,66 +363,64 @@ namespace PR_5_Var_2
             {
                 if (IsRightRus(tbRub.Text))
                 {
-
-                        if (IsRightRus(tbKop.Text))
+                    if (IsRightRus(tbKop.Text))
+                    {
+                        if (IsRightKop(tbKop.Text))
                         {
-                            if(IsRightKop(tbKop.Text))
+                            if (cbIn.SelectedIndex != -1)
                             {
-                                if (cbIn.SelectedIndex != -1)
+                                double n;
+                                if (Convert.ToInt32(tbKop.Text) == 100)
                                 {
-                                    double n;
-                                    if (Convert.ToInt32(tbKop.Text) == 100)
-                                    {
-                                        n = Convert.ToDouble(tbRub.Text);
-                                        n++;
-                                    }
-                                    else
-                                    {
-                                        string str = tbRub.Text + "," + tbKop.Text;
-                                        n = Convert.ToDouble(str);
-                                    }
-                                    stOtv.Visibility = Visibility.Visible;
-                                    switch (cbIn.SelectedIndex)
-                                    {
-                                        case 0:
-                                            n /= 58.08;
-                                            n = Math.Round(n, 2);
-                                            txtOtv.Text = "Итог: ";
-                                            txtOtv.Text += n.ToString() + " долларов";
-                                            break;
-                                        case 1:
-                                            n /= 56.32;
-                                            n = Math.Round(n, 2);
-                                            txtOtv.Text = "Итог: ";
-                                            txtOtv.Text += n.ToString() + " евро";
-                                            break;
-                                        case 2:
-                                            n /= 0.71;
-                                            n = Math.Round(n, 2);
-                                            txtOtv.Text = "Итог: ";
-                                            txtOtv.Text += n.ToString() + " рупи";
-                                            break;
-                                        case 3:
-                                            n /= 59;
-                                            n = Math.Round(n, 2);
-                                            txtOtv.Text = "Итог: ";
-                                            txtOtv.Text += n.ToString() + " франков";
-                                            break;
-                                        case 4:
-                                            n /= 0.4;
-                                            n = Math.Round(n, 2);
-                                            txtOtv.Text = "Итог: ";
-                                            txtOtv.Text += n.ToString() + " иенов";
-                                            break;
-                                    }
+                                    n = Convert.ToDouble(tbRub.Text);
+                                    n++;
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Выберите значение из выпадающего списка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    string str = tbRub.Text + "," + tbKop.Text;
+                                    n = Convert.ToDouble(str);
+                                }
+                                stOtv.Visibility = Visibility.Visible;
+                                switch (cbIn.SelectedIndex)
+                                {
+                                    case 0:
+                                        n /= 58.08;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " долларов";
+                                        break;
+                                    case 1:
+                                        n /= 56.32;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " евро";
+                                        break;
+                                    case 2:
+                                        n /= 0.71;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " рупи";
+                                        break;
+                                    case 3:
+                                        n /= 59;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " франков";
+                                        break;
+                                    case 4:
+                                        n /= 0.4;
+                                        n = Math.Round(n, 2);
+                                        txtOtv.Text = "Итог: ";
+                                        txtOtv.Text += n.ToString() + " иенов";
+                                        break;
                                 }
                             }
+                            else
+                            {
+                                MessageBox.Show("Выберите значение из выпадающего списка", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                            }
                         }
-                    
+                    }
                 }
             }
         }
