@@ -37,27 +37,30 @@ namespace PR_5_Var_2
     /// </summary>
     public partial class MainWindow : Window
     {
-        void getData(string path, List<MoneyString> L)
+        void GetData(string FilePath, List<MoneyString> L)
         {
-            using (StreamReader sr = new StreamReader(path))
+            using (StreamReader stream = new StreamReader(FilePath))
             {
-                while (sr.EndOfStream != true)
+                while (stream.EndOfStream != true)
                 {
-                    string[] array = sr.ReadLine().Split(';');
+                    string[] array = stream.ReadLine().Split(';');
                     AddItem(L, array[0], array[1], array[2], array[3], array[4], array[5], array[6]);
                 }
             }
         }
-        static void PrintToFile(string path, List<MoneyString> L)
+
+
+        static void PrintToFile(string FilePath, List<MoneyString> List)
         {
-            using (StreamWriter sw = new StreamWriter(path))
+            using (StreamWriter stream = new StreamWriter(FilePath))
             {
-                foreach (MoneyString u in L)
+                foreach (MoneyString u in List)
                 {
-                    sw.WriteLine(u.concat());
+                    stream.WriteLine(u.concat());
                 }
             }
         }
+
         void AddItem(List<MoneyString> L, string rubl, string kop, string dollar, string euro, string rupi, string frank, string ien)
         {
             L.Add(new MoneyString()
